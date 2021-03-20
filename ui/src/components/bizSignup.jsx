@@ -18,9 +18,7 @@ class BizSignup extends Form {
   async doSubmit() {
     const data = { ...this.state.data, biz: true };
     try {
-      const { email, password } = data;
       await http.post(`/users`, data);
-      await userService.login(email, password);
       this.props.history.push("/signin");
     } catch (err) {
       if (err.response && err.response.status === 400) {
